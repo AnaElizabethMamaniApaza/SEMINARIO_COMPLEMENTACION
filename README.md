@@ -36,7 +36,7 @@ FROM Proyecto;
 ```
 
 __ejercicio 5__
->
+>¿Qué empleados están asignados al proyecto identificado con el número 4, y cuáles son sus nombres?
 ```
 SELECT *
 FROM Empleado
@@ -44,6 +44,7 @@ WHERE IDJefe IS NOT NULL AND
 (Salario + COALESCE(Comision, 0) > 4 OR Salario > 4);
 ```
 __ejercicio 6__
+>¿En qué proyectos está participando el empleado con el identificador 4, y cuáles son los nombres de esos proyectos?
 ```
 SELECT *
 FROM Proyecto
@@ -52,7 +53,7 @@ WHERE IDDepartamento IS NOT NULL AND
 ```
 
 __ejercicio 7__
->
+>¿Cuántas horas han trabajado en total los empleados en el proyecto con identificador 2?
 ```
 SELECT SUM(Horastrabajadas)
 FROM EmpleadoProyecto
@@ -60,6 +61,7 @@ WHERE  IDProyecto =2;
 ```
 
 __ejercicio 8__
+>¿Cuáles son los empleados que han trabajado más de 10 horas en el proyecto con identificador 2?
 ```
 SELECT E.IDEmpleado, E.NombreEmpleado
 FROM Empleado E
@@ -68,7 +70,7 @@ where EP.IDProyecto = 2 AND EP.HorasTrabajadas >10;
 ```
 
 __ejercicio 9__
->
+>¿Cuál es el total de horas trabajadas por cada empleado en todos los proyectos?
 ```
 SELECT HorasTrabajadas,IDempleado AS "IDEmpleados",
        AVG(HorasTrabajadas + COALESCE(IDProyecto, 0)) AS " Total de horas trabajadas"
@@ -78,7 +80,7 @@ GROUP BY IDEmpleado, IDProyecto;
 
 
 __ejercicio 10__
->
+>¿Cuáles son los empleados que trabajan en más de un proyecto?
 
 ```
     SELECT E.IDEmpleado, E.NombreEmpleado
@@ -89,7 +91,7 @@ __ejercicio 10__
 ```
 
 __ejercicio 11__
->¿Cuáles son los empleados que trabajan en más de un proyecto?
+>¿Cuáles son los empleados que han trabajado más de 30 horas en total en todos los proyectos?
 ```
 SELECT E.IDEmpleado, E.NombreEmpleado, SUM(EP.HorasTrabajadas) AS totalHorasTrabajadas
 FROM Empleado E
